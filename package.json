@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "altr",
+  "version": "1.0.0",
+  "author": "Jonathan Olaleye",
+  "license": "MIT",
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "dev": "next"
+  },
+  "dependencies": {
+    "next": "^7.0.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  }
+}
