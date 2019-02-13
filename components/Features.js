@@ -5,7 +5,7 @@ export default function Features() {
       <ul>
         <li>
           <i className="uil uil-check" />
-          Convert image, video, or audio file format
+          Convert between image, video, and audio file formats
         </li>
         <li>
           <i className="uil uil-check" />
@@ -13,7 +13,7 @@ export default function Features() {
         </li>
         <li>
           <i className="uil uil-check" />
-          Import YouTube video and other media by URL
+          Import YouTube videos and other media by URL
         </li>
         <li>
           <i className="uil uil-check" />
@@ -27,7 +27,7 @@ export default function Features() {
 
       <style jsx>{`
         section {
-          padding: 3.5em 1em;
+          padding: 3.5em 0.75em;
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
@@ -45,7 +45,7 @@ export default function Features() {
         }
 
         li {
-          margin: 0.5em 0;
+          margin: 1em 0;
           display: flex;
           align-items: center;
         }
