@@ -1,6 +1,7 @@
 import { breakpoints } from '../theme';
 import Head from 'next/head';
 import Header from '../components/Header';
+import Features from '../components/Features';
 
 export default () => (
   <>
@@ -8,10 +9,14 @@ export default () => (
       <title>Altr</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet" />
+      <link rel="stylesheet" href="https://unicons.iconscout.com/release/v0.0.2/css/unicons.css" />
     </Head>
 
     <div className="root">
       <Header />
+      <main>
+        <Features />
+      </main>
 
       <style jsx global>{`
         * {
@@ -22,7 +27,6 @@ export default () => (
 
         html {
           font-size: 16px;
-          line-height: 1.5;
           color: hsl(0, 0%, 18%);
           font-family: 'Poppins', sans-serif;
         }
@@ -30,21 +34,18 @@ export default () => (
         @media ${breakpoints.md} {
           html {
             font-size: 20px;
-            line-height: 1.875;
           }
         }
 
         @media ${breakpoints.lg} {
           html {
             font-size: 24px;
-            line-height: 2.25;
           }
         }
 
         @media ${breakpoints.xl} {
           html {
             font-size: 38px;
-            line-height: 3.56;
           }
         }
       `}</style>
