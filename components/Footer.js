@@ -24,7 +24,7 @@ export default function Footer() {
         }
 
         ul {
-          font-size: 0.6em;
+          font-size: 0.8em;
           color: hsla(0, 0%, 100%, 0.6);
           list-style: none;
         }
@@ -38,41 +38,32 @@ export default function Footer() {
         }
 
         svg {
-          fill: white;
+          fill: hsla(0, 0%, 100%, 0.9);
           width: 4em;
           margin: 2em 0;
         }
 
         p {
-          color: hsla(0, 0%, 100%, 0.1);
+          color: hsla(0, 0%, 100%, 0.3);
           font-size: 0.6em;
+          margin-top: 0.6em;
         }
 
         @media ${breakpoints.sm} {
-          ul {
-            font-size: 0.8em;
-          }
-
           li:not(:nth-child(1)) {
-            margin-left: 1.8em;
-          }
-
-          p {
-            font-size: 0.8em;
+            margin-left: 2em;
           }
         }
 
         @media ${breakpoints.md} {
-          ul {
-            font-size: 0.8em;
-          }
-
           li:not(:nth-child(1)) {
-            margin-left: 2em;
+            margin-left: 2.5em;
           }
+        }
 
-          p {
-            font-size: 0.6em;
+        @media ${breakpoints.lg} {
+          li:not(:nth-child(1)) {
+            margin-left: 3em;
           }
         }
       `}</style>

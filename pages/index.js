@@ -33,6 +33,12 @@ export default () => (
           font-family: 'Poppins', sans-serif;
         }
 
+        @media ${breakpoints.sm} {
+          html {
+            font-size: 18px;
+          }
+        }
+
         @media ${breakpoints.md} {
           html {
             font-size: 20px;

@@ -13,7 +13,7 @@ export default function Nav() {
 
       <style jsx>{`
         nav {
-          padding: 2em;
+          padding: 2em 1em;
           margin: 0.5em 4% 0 4%;
           display: flex;
           flex-flow: row nowrap;
@@ -39,6 +39,7 @@ export default function Nav() {
           nav {
             margin: 1.25em 6% 0 6%;
           }
+
           svg {
             width: 5.5em;
           }

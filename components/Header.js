@@ -14,14 +14,13 @@ export default function Header() {
 
         h1 {
           font-weight: 600;
-          font-size: 1.2em;
-          margin: 0.5em 4% 0 4%;
+          font-size: 1.75em;
+          margin: 0.5em 0.75em 0 0.75em;
         }
 
         @media ${breakpoints.sm} {
           h1 {
-            font-size: 1.4em;
-            margin-top: 0.8;
+            margin-top: 0.8em;
           }
         }
       `}</style>

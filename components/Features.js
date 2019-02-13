@@ -29,7 +29,7 @@ export default function Features() {
 
       <style jsx>{`
         section {
-          padding: 3.5em 1.5em;
+          padding: 3.5em 1em;
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
@@ -37,7 +37,6 @@ export default function Features() {
 
         h1 {
           font-weight: 600;
-          font-size: 1.2em;
           margin-top: 1em;
           margin-bottom: 0.5em;
         }
@@ -48,30 +47,13 @@ export default function Features() {
         }
 
         li {
-          font-size: 0.8em;
           margin: 0.5em 0;
           display: flex;
           align-items: center;
         }
 
         li i {
-          font-size: 1.8em;
-        }
-
-        @media ${breakpoints.sm} {
-          h1 {
-            font-size: 1.4em;
-          }
-
-          li {
-            font-size: 1em;
-          }
-        }
-
-        @media ${breakpoints.md} {
-          li {
-            font-size: 0.9em;
-          }
+          font-size: 1.75em;
         }
       `}</style>
     </section>
