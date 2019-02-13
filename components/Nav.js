@@ -41,8 +41,8 @@ export default function Nav() {
         }
 
         a {
-          text-decoration: none !important;
-          color: hsl(0, 0%, 18%) !important;
+          text-decoration: none;
+          color: hsl(0, 0%, 18%);
         }
 
         @media ${breakpoints.sm} {
