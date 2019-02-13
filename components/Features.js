@@ -1,8 +1,6 @@
-import { breakpoints } from '../theme';
-
 export default function Features() {
   return (
-    <section>
+    <section id="features">
       <h1>Features</h1>
       <ul>
         <li>

@@ -1,4 +1,5 @@
 import { breakpoints } from '../theme';
+import Link from 'next/link';
 
 export default function Nav() {
   return (
@@ -8,7 +9,11 @@ export default function Nav() {
       </svg>
 
       <ul>
-        <li>Features</li>
+        <li>
+          <Link href="/#features">
+            <a>Features</a>
+          </Link>
+        </li>
       </ul>
 
       <style jsx>{`
@@ -33,6 +38,11 @@ export default function Nav() {
 
         li {
           display: inline;
+        }
+
+        a {
+          text-decoration: none !important;
+          color: hsl(0, 0%, 18%) !important;
         }
 
         @media ${breakpoints.sm} {
