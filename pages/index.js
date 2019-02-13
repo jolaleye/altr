@@ -24,6 +24,7 @@ export default () => (
           font-size: 16px;
           line-height: 1.5;
           color: hsl(0, 0%, 18%);
+          font-family: 'Poppins', sans-serif;
         }
 
         @media ${breakpoints.md} {

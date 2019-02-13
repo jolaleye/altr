@@ -28,7 +28,6 @@ export default function Nav() {
 
         ul {
           list-style: none;
-          font-family: 'Poppins', sans-serif;
           font-weight: 500;
         }
 
