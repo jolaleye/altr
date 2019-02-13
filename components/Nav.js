@@ -39,6 +39,9 @@ export default function Nav() {
           nav {
             margin: 1.25em 6% 0 6%;
           }
+          svg {
+            width: 5.5em;
+          }
         }
 
         @media ${breakpoints.md} {
