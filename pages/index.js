@@ -2,6 +2,7 @@ import { breakpoints } from '../theme';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Features from '../components/Features';
+import Footer from '../components/Footer';
 
 export default () => (
   <>
@@ -17,6 +18,7 @@ export default () => (
       <main>
         <Features />
       </main>
+      <Footer />
 
       <style jsx global>{`
         * {
