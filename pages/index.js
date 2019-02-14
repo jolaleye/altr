@@ -11,7 +11,7 @@ export default () => (
       <meta name="title" content="Altr • Transform your images, videos, and audio with ease." />
       <meta
         name="description"
-        content="Quickly convert between file formats, adjust image quality, import YouTube videos, and more."
+        content="Quickly convert between file formats, adjust image quality, import media by URL, and more."
       />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet" />

@@ -13,7 +13,7 @@ export default function Features() {
         </li>
         <li>
           <i className="uil uil-check" />
-          Import YouTube videos and other media by URL
+          Import images, videos, and audio by URL
         </li>
         <li>
           <i className="uil uil-check" />
