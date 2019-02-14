@@ -7,7 +7,12 @@ import Footer from '../components/Footer';
 export default () => (
   <>
     <Head>
-      <title>Altr</title>
+      <title>Altr • Transform your images, videos, and audio with ease.</title>
+      <meta name="title" content="Altr • Transform your images, videos, and audio with ease." />
+      <meta
+        name="description"
+        content="Quickly convert between file formats, adjust image quality, import YouTube videos, and more."
+      />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet" />
       <link rel="stylesheet" href="https://unicons.iconscout.com/release/v0.0.2/css/unicons.css" />
