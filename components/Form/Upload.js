@@ -4,7 +4,7 @@ import axios from 'axios';
 import { breakpoints } from '../../theme';
 import { verifyMIME } from '../../utils';
 
-export default function Upload() {
+export default function Upload({ upload }) {
   // display upload errors
   const [fileErr, setFileErr] = useState('');
   const clearErr = () => setFileErr('');
@@ -20,6 +20,7 @@ export default function Upload() {
   const submitFile = () => {
     const file = fileSelect.current.files[0];
     if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
+    else upload(file);
   };
 
   // handle file upload by url
@@ -33,6 +34,7 @@ export default function Upload() {
       .then(res => {
         const file = res.data;
         if (!verifyMIME(file.type)) setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
+        else upload(file);
       })
       .catch(err => setFileErr("That URL doesn't seem to work."));
 
@@ -52,6 +54,7 @@ export default function Upload() {
 
     const file = e.dataTransfer.files[0];
     if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
+    else upload(file);
   };
 
   return (

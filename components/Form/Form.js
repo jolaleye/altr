@@ -1,10 +1,18 @@
+import { useState } from 'react';
+
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
 
 export default function Form() {
+  const [file, setFile] = useState();
+
+  const upload = file => {
+    setFile(file);
+  };
+
   return (
     <div className="form-container">
-      <Upload />
+      <Upload upload={upload} />
 
       <style jsx>{`
         .form-container {
