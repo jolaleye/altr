@@ -1,27 +1,47 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { breakpoints } from '../../theme';
 
 export default function Upload() {
+  // display upload errors
+  const [fileErr, setFileErr] = useState('');
+  const clearErr = () => setFileErr('');
+
+  // clear errors on click
+  const form = useRef();
+  useEffect(() => {
+    form.current.addEventListener('click', clearErr);
+  });
+
+  // handle file selection
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
   };
 
+  // handle file upload by url
   const [fileUrl, setFileUrl] = useState('');
   const submitUrl = e => {
     e.preventDefault();
+
+    fetch(fileUrl)
+      .then(res => {
+        if (!res.ok) setFileErr("That URL doesn't seem to work.");
+        return res.blob();
+      })
+      .then(blob => {})
+      .catch(err => setFileErr('Something went wrong.'));
+
     setFileUrl('');
   };
 
+  // handle file upload by drag&drop
   const fileDrop = useRef();
   const onDragOver = e => {
     e.preventDefault();
     e.target.classList.add('dragover');
   };
-  const onDragLeave = e => {
-    e.target.classList.remove('dragover');
-  };
+  const onDragLeave = e => e.target.classList.remove('dragover');
   const onDrop = e => {
     e.preventDefault();
     e.target.classList.remove('dragover');
@@ -30,7 +50,9 @@ export default function Upload() {
   };
 
   return (
-    <div className="upload">
+    <div className="upload" ref={form}>
+      {fileErr && <p className="error">{fileErr}</p>}
+
       <label className="fileSelect">
         Choose file
         <input type="file" onChange={submitFile} ref={fileSelect} />
@@ -54,6 +76,13 @@ export default function Upload() {
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
+        }
+
+        .error {
+          font-size: 0.75em;
+          font-weight: 500;
+          color: hsla(0, 100%, 65%, 0.9);
+          margin: 1em 0;
         }
 
         .or {
