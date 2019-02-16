@@ -34,7 +34,7 @@ export default function Upload() {
         const file = res.data;
         if (!verifyMIME(file.type)) setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
       })
-      .catch(err => setFileErr("That URL doesn't belong to a supported image, video, or audio file."));
+      .catch(err => setFileErr("That URL doesn't seem to work."));
 
     setFileUrl('');
   };
