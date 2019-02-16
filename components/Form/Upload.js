@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { breakpoints } from '../../theme';
+import { verifyMIME } from '../../utils';
 
 export default function Upload() {
   // display upload errors
@@ -17,6 +18,7 @@ export default function Upload() {
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
+    if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
   };
 
   // handle file upload by url
@@ -30,7 +32,7 @@ export default function Upload() {
         return res.blob();
       })
       .then(blob => {})
-      .catch(err => setFileErr('Something went wrong.'));
+      .catch(err => setFileErr("That URL doesn't seem to work."));
 
     setFileUrl('');
   };
@@ -47,6 +49,7 @@ export default function Upload() {
     e.target.classList.remove('dragover');
 
     const file = e.dataTransfer.files[0];
+    if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
   };
 
   return (
