@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
 import { breakpoints } from '../../theme';
-import { verifyMIME } from '../../utils';
+import { validateMIME } from '../../utils';
 
 export default function Upload({ upload }) {
   // display upload errors
@@ -19,8 +19,8 @@ export default function Upload({ upload }) {
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
-    if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
-    else upload(file);
+    if (validateMIME(file.type)) upload(file);
+    else setFileErr('This file type is not currently supported.');
   };
 
   // handle file upload by url
@@ -33,8 +33,8 @@ export default function Upload({ upload }) {
       .post('http://localhost:3000/fetch', { url: fileUrl }, { responseType: 'blob' })
       .then(res => {
         const file = res.data;
-        if (!verifyMIME(file.type)) setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
-        else upload(file);
+        if (validateMIME(file.type)) upload(file);
+        else setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
       })
       .catch(err => setFileErr("That URL doesn't seem to work."));
 
@@ -53,8 +53,8 @@ export default function Upload({ upload }) {
     e.target.classList.remove('dragover');
 
     const file = e.dataTransfer.files[0];
-    if (!verifyMIME(file.type)) setFileErr('This file type is not currently supported.');
-    else upload(file);
+    if (validateMIME(file.type)) upload(file);
+    else setFileErr('This file type is not currently supported.');
   };
 
   return (
