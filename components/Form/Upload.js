@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
 
 import { breakpoints } from '../../theme';
 import { verifyMIME } from '../../utils';
@@ -26,13 +27,14 @@ export default function Upload() {
   const submitUrl = e => {
     e.preventDefault();
 
-    fetch(fileUrl)
+    // fetch the content using the api
+    axios
+      .post('http://localhost:3000/fetch', { url: fileUrl }, { responseType: 'blob' })
       .then(res => {
-        if (!res.ok) setFileErr("That URL doesn't seem to work.");
-        return res.blob();
+        const file = res.data;
+        if (!verifyMIME(file.type)) setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
       })
-      .then(blob => {})
-      .catch(err => setFileErr("That URL doesn't seem to work."));
+      .catch(err => setFileErr("That URL doesn't belong to a supported image, video, or audio file."));
 
     setFileUrl('');
   };
@@ -82,10 +84,10 @@ export default function Upload() {
         }
 
         .error {
-          font-size: 0.75em;
+          font-size: 0.7em;
           font-weight: 500;
           color: hsla(0, 100%, 65%, 0.9);
-          margin: 1em 0;
+          margin-bottom: 2em;
         }
 
         .or {
