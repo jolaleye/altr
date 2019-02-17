@@ -130,7 +130,7 @@ export default function Upload({ upload }) {
           font-size: 0.8em;
           padding-left: 0.8em;
           border-radius: 10px;
-          width: 85%;
+          width: 90%;
           text-align: left;
           display: flex;
           flex-flow: row nowrap;
@@ -164,7 +164,7 @@ export default function Upload({ upload }) {
 
         .fileDrop {
           display: flex;
-          width: 85%;
+          width: 90%;
           height: 6em;
           border-radius: 10px;
           background-color: hsl(0, 0%, 97%);
