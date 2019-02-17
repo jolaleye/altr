@@ -12,7 +12,7 @@ const loadingMsgs = [
   '*Elevator music*...'
 ];
 
-export default function Download({ result }) {
+export default function Download({ result, reset }) {
   const [msgIndex, setMsgIndex] = useState(0);
 
   useInterval(() => {
@@ -27,6 +27,9 @@ export default function Download({ result }) {
         <div>
           <p>Your file is ready!</p>
           <button onClick={() => saveAs(result)}>Download</button>
+          <p className="reset" onClick={reset}>
+            Do it again
+          </p>
         </div>
       ) : (
         <div>
@@ -48,6 +51,15 @@ export default function Download({ result }) {
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 10px;
           border: none;
+        }
+
+        .reset {
+          font-size: 0.75em;
+          margin-top: 2.25em;
+        }
+
+        .reset:hover {
+          cursor: pointer;
         }
 
         .loading {

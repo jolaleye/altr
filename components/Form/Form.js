@@ -17,7 +17,7 @@ export default function Form() {
   // clear errors on click
   const form = useRef();
   useEffect(() => {
-    form.current.addEventListener('click', () => setError(''));
+    form.current.addEventListener('click', () => setError());
   });
 
   const submit = options => {
@@ -48,9 +48,17 @@ export default function Form() {
       });
   };
 
+  // reset state to go through the form again
+  const reset = () => {
+    setError();
+    setFile();
+    setResult();
+    setWaiting();
+  };
+
   // decide which stage to show
   let stage;
-  if (result || waiting) stage = <Download result={result} />;
+  if (result || waiting) stage = <Download result={result} reset={reset} />;
   else if (file) {
     if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
     else if (/^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
@@ -61,7 +69,7 @@ export default function Form() {
       <div className="top-bar">
         {/* blank elements center the error message whether the back button is present or not */}
         {!result && !waiting && file ? (
-          <p className="back" onClick={() => setFile(null)}>
+          <p className="back" onClick={() => setFile()}>
             <i className="uil uil-angle-left" /> back
           </p>
         ) : (
