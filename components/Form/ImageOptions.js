@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import TextInput from './Fields/TextInput';
 import Select from './Fields/Select';
+import Slider from './Fields/Slider';
 
 export default function ImageOptions() {
   const [format, setFormat] = useState();
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
+  const [quality, setQuality] = useState(90);
 
   return (
     <div className="options">
@@ -20,6 +22,9 @@ export default function ImageOptions() {
       <div className="row">
         <TextInput label={'Width'} value={width} onChange={e => setWidth(e.target.value)} />
         <TextInput label={'Height'} value={height} onChange={e => setHeight(e.target.value)} />
+      </div>
+      <div className="row">
+        <Slider label={'Quality'} value={quality} onChange={e => setQuality(e.target.value)} min={1} max={100} />
       </div>
 
       <style jsx>{`
