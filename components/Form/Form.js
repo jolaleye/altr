@@ -130,6 +130,33 @@ export default function Form() {
           }
         }
       `}</style>
+
+      {/* options styling */}
+      <style jsx global>{`
+        .options {
+          margin-top: 1.5em;
+        }
+
+        .options__row {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 1.5em;
+        }
+
+        .options__submit {
+          cursor: pointer;
+          margin-top: 2em;
+          font-size: 1em;
+          color: hsla(0, 0%, 18%, 0.9);
+          font-weight: 600;
+          padding: 0.8em 2em;
+          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          border-radius: 10px;
+          border: none;
+        }
+      `}</style>
     </div>
   );
 }
