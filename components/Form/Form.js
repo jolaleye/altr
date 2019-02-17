@@ -21,9 +21,9 @@ export default function Form() {
     form.current.addEventListener('click', () => setError());
   });
 
+  // submit file and chosen options
   const submit = options => {
     const reqData = new FormData();
-    // add the file and chosen options
     reqData.append('file', file);
     for (const option of Object.keys(options)) {
       if (options[option]) reqData.set(option, options[option]);
@@ -45,7 +45,9 @@ export default function Form() {
           const reader = new FileReader();
           reader.onload = e => setError(e.target.result);
           reader.readAsText(err.response.data);
-        } else if (err.request) setError('Something went wrong.');
+        } else if (err.request) {
+          setError('Something went wrong.');
+        }
       });
   };
 
@@ -60,11 +62,10 @@ export default function Form() {
   // decide which stage to show
   let stage;
   if (result || waiting) stage = <Download result={result} reset={reset} />;
-  else if (file) {
-    if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
-    else if (/^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
-    else if (/^audio/.test(file.type)) stage = <AudioOptions submit={submit} />;
-  } else stage = <Upload upload={setFile} setError={setError} />;
+  else if (file && /^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
+  else if (file && /^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
+  else if (file && /^audio/.test(file.type)) stage = <AudioOptions submit={submit} />;
+  else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
     <div className="form-container" ref={form}>
@@ -165,6 +166,7 @@ export default function Form() {
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 10px;
           border: none;
+          background-color: white;
         }
       `}</style>
     </div>
