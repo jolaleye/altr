@@ -1,26 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import axios from 'axios';
 
 import { breakpoints } from '../../theme';
 import { validateMIME } from '../../utils';
 
-export default function Upload({ upload }) {
-  // display upload errors
-  const [fileErr, setFileErr] = useState('');
-  const clearErr = () => setFileErr('');
-
-  // clear errors on click
-  const form = useRef();
-  useEffect(() => {
-    form.current.addEventListener('click', clearErr);
-  });
-
+export default function Upload({ upload, setError }) {
   // handle file selection
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
     if (validateMIME(file.type)) upload(file);
-    else setFileErr('This file type is not currently supported.');
+    else setError('That file type is not currently supported.');
   };
 
   // handle file upload by url
@@ -34,14 +24,14 @@ export default function Upload({ upload }) {
       .then(res => {
         const file = res.data;
         if (validateMIME(file.type)) upload(file);
-        else setFileErr("That URL doesn't belong to a supported image, video, or audio file.");
+        else setError("That URL doesn't belong to a supported image, video, or audio file.");
       })
-      .catch(err => setFileErr("That URL doesn't seem to work."));
+      .catch(err => setError("That URL doesn't seem to work."));
 
     setFileUrl('');
   };
 
-  // handle file upload by drag&drop
+  // handle file upload by drag & drop
   const fileDrop = useRef();
   const onDragOver = e => {
     e.preventDefault();
@@ -54,13 +44,11 @@ export default function Upload({ upload }) {
 
     const file = e.dataTransfer.files[0];
     if (validateMIME(file.type)) upload(file);
-    else setFileErr('This file type is not currently supported.');
+    else setError('This file type is not currently supported.');
   };
 
   return (
-    <div className="upload" ref={form}>
-      {fileErr && <p className="error">{fileErr}</p>}
-
+    <div className="upload">
       <label className="fileSelect">
         Choose file
         <input type="file" onChange={submitFile} ref={fileSelect} />
@@ -84,13 +72,6 @@ export default function Upload({ upload }) {
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
-        }
-
-        .error {
-          font-size: 0.7em;
-          font-weight: 500;
-          color: hsla(0, 100%, 65%, 0.9);
-          margin-bottom: 2em;
         }
 
         .or {

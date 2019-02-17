@@ -37,19 +37,23 @@ export default function Form() {
   let stage;
   if (result) stage = <div />;
   else if (file) stage = <Options file={file} submit={submit} />;
-  else stage = <Upload upload={setFile} />;
+  else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
     <div className="form-container" ref={form}>
       <div className="top-bar">
-        {!result && file && (
+        {/* blank elements center the error message whether the back button is present or not */}
+        {!result && file ? (
           <p className="back" onClick={() => setFile(null)}>
             <i className="uil uil-angle-left" /> back
           </p>
+        ) : (
+          <p className="blank" />
         )}
         {error && <p className="error">{error}</p>}
         <p className="blank" />
       </div>
+
       {stage}
 
       <style jsx>{`
