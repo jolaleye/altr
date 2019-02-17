@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
 import { breakpoints } from '../../theme';
@@ -6,11 +6,15 @@ import Upload from './Upload';
 import Options from './Options';
 
 export default function Form() {
-  const [file, setFile] = useState(null);
-  const clearFile = () => setFile(null);
+  const [error, setError] = useState();
+  const [file, setFile] = useState();
+  const [result, setResult] = useState();
 
-  const [result, setResult] = useState(null);
-  const [uploadErr, setUploadErr] = useState('');
+  // clear errors on click
+  const form = useRef();
+  useEffect(() => {
+    form.current.addEventListener('click', () => setError(''));
+  });
 
   const submit = options => {
     const reqData = new FormData();
@@ -24,20 +28,28 @@ export default function Form() {
       .post('http://localhost:3000/upload', reqData)
       .then(res => setResult(res.data))
       .catch(err => {
-        if (err.response) setUploadErr(err.response.data);
-        else if (err.request) setUploadErr('Something went wrong.');
+        if (err.response) setError(err.response.data);
+        else if (err.request) setError('Something went wrong.');
       });
   };
 
   // decide which stage to show
   let stage;
   if (result) stage = <div />;
-  else if (file) stage = <Options file={file} back={clearFile} submit={submit} />;
+  else if (file) stage = <Options file={file} submit={submit} />;
   else stage = <Upload upload={setFile} />;
 
   return (
-    <div className="form-container">
-      {uploadErr && <p className="error">{uploadErr}</p>}
+    <div className="form-container" ref={form}>
+      <div className="top-bar">
+        {!result && file && (
+          <p className="back" onClick={() => setFile(null)}>
+            <i className="uil uil-angle-left" /> back
+          </p>
+        )}
+        {error && <p className="error">{error}</p>}
+        <p className="blank" />
+      </div>
       {stage}
 
       <style jsx>{`
@@ -49,11 +61,38 @@ export default function Form() {
           padding: 2em 3em;
         }
 
+        .top-bar {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1em;
+        }
+
+        .back,
+        .blank {
+          flex: 1;
+        }
+
         .error {
           font-size: 0.7em;
           font-weight: 500;
           color: hsla(0, 100%, 65%, 0.9);
-          margin-bottom: 2em;
+        }
+
+        .back {
+          text-align: left;
+          display: flex;
+          align-items: center;
+          font-size: 0.8em;
+        }
+
+        .back:hover {
+          cursor: pointer;
+        }
+
+        .back i {
+          font-size: 1.2em;
         }
 
         @media ${breakpoints.sm} {
