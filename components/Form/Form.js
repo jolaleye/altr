@@ -5,6 +5,7 @@ import mime from 'mime';
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
 import ImageOptions from './ImageOptions';
+import VideoOptions from './VideoOptions';
 import Download from './Download';
 
 export default function Form() {
@@ -52,6 +53,7 @@ export default function Form() {
   if (result || waiting) stage = <Download result={result} />;
   else if (file) {
     if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
+    else if (/^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
   } else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
