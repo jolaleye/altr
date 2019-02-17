@@ -1,8 +1,8 @@
-export default function Number({ label, value, onChange, min }) {
+export default function Number({ label, placeholder, value, onChange, min }) {
   return (
     <label>
       {label}
-      <input type="number" value={value} onChange={onChange} min={min} />
+      <input type="number" placeholder={placeholder} value={value} onChange={onChange} min={min} />
 
       <style jsx>{`
         label {
@@ -26,6 +26,10 @@ export default function Number({ label, value, onChange, min }) {
           width: 100%;
           margin-top: 0.5em;
           color: hsla(0, 0%, 18%, 0.8);
+        }
+
+        input::placeholder {
+          color: hsla(0, 0%, 18%, 0.5);
         }
 
         input:focus {
