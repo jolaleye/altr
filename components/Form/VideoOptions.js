@@ -5,15 +5,15 @@ import Select from './Fields/Select';
 
 export default function VideoOptions({ submit }) {
   const [format, setFormat] = useState('mp4');
-  const [width, setWidth] = useState();
-  const [height, setHeight] = useState();
+  const [width, setWidth] = useState('');
+  const [height, setHeight] = useState('');
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
 
   return (
     <div className="options">
       <div className="row">
-        <Select label={'Format'} value={format} onChange={e => setFormat(e.target.value)}>
+        <Select label="Format" value={format} onChange={e => setFormat(e.target.value)}>
           <option value="mp4">mp4</option>
           <option value="mov">mov</option>
           <option value="webm">webm</option>
@@ -23,13 +23,13 @@ export default function VideoOptions({ submit }) {
         </Select>
       </div>
       <div className="row">
-        <Number label="Width (px)" placeholder="600" value={width} onChange={e => setWidth(e.target.value)} min={1} />
+        <Number label="Width (px)" placeholder="600" value={width} onChange={e => setWidth(e.target.value)} min="1" />
         {/* prettier-ignore */}
-        <Number label="Height (px)" placeholder="400" value={height} onChange={e => setHeight(e.target.value)} min={1} />
+        <Number label="Height (px)" placeholder="400" value={height} onChange={e => setHeight(e.target.value)} min="1" />
       </div>
       <div className="row">
-        <Number label="Start (s)" placeholder="0" value={start} onChange={e => setStart(e.target.value)} min={0} />
-        <Number label="End (s)" placeholder="5" value={end} onChange={e => setEnd(e.target.value)} min={0} />
+        <Number label="Start (s)" placeholder="0" value={start} onChange={e => setStart(e.target.value)} min="0" />
+        <Number label="End (s)" placeholder="5" value={end} onChange={e => setEnd(e.target.value)} min="0" />
       </div>
 
       <button onClick={() => submit({ format, width, height, start, end })}>Submit</button>
