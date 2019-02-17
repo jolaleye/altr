@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-import mime from 'mime';
 
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
@@ -35,7 +34,7 @@ export default function Form() {
       .then(res => {
         setWaiting(false);
         // combine the old name with the new extension
-        const name = `${file.name.replace(/(?:\.([^.]+))?$/, '')}.${mime.getExtension(res.data.type)}`;
+        const name = `${file.name.replace(/(?:\.([^.]+))?$/, '')}.${options.format}`;
         setResult(new File([res.data], name));
       })
       .catch(err => {
