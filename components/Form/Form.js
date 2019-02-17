@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
-import Options from './Options';
+import ImageOptions from './ImageOptions';
 
 export default function Form() {
   const [error, setError] = useState();
@@ -36,8 +36,9 @@ export default function Form() {
   // decide which stage to show
   let stage;
   if (result) stage = <div />;
-  else if (file) stage = <Options file={file} submit={submit} />;
-  else stage = <Upload upload={setFile} setError={setError} />;
+  else if (file) {
+    if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
+  } else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
     <div className="form-container" ref={form}>
