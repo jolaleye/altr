@@ -2,17 +2,15 @@ import { useState } from 'react';
 
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
+import Options from './Options';
 
 export default function Form() {
   const [file, setFile] = useState();
-
-  const upload = file => {
-    setFile(file);
-  };
+  const clearFile = () => setFile(null);
 
   return (
     <div className="form-container">
-      <Upload upload={upload} />
+      {file ? <Options file={file} back={clearFile} /> : <Upload upload={setFile} />}
 
       <style jsx>{`
         .form-container {
@@ -27,7 +25,7 @@ export default function Form() {
           .form-container {
             width: 32em;
             margin: 3em auto 0 auto;
-            padding: 2.5em 4em;
+            padding: 2.5em 5em;
           }
         }
 
