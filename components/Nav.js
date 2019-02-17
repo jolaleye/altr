@@ -13,6 +13,11 @@ export default function Nav() {
 
       <ul>
         <li>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </li>
+        <li>
           <Link href="/#features">
             <a>Features</a>
           </Link>
@@ -41,10 +46,12 @@ export default function Nav() {
         ul {
           list-style: none;
           font-weight: 500;
+          font-size: 0.9em;
         }
 
         li {
           display: inline;
+          margin-left: 2em;
         }
 
         a {
