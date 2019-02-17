@@ -29,7 +29,7 @@ export default function Number({ label, placeholder, value, onChange, min }) {
         }
 
         input::placeholder {
-          color: hsla(0, 0%, 18%, 0.5);
+          color: hsla(0, 0%, 18%, 0.2);
         }
 
         input:focus {
