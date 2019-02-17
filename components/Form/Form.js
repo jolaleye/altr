@@ -122,7 +122,6 @@ export default function Form() {
 
         .back:hover {
           cursor: pointer;
-          filter: drop-shadow(0 4px 2px hsla(0, 0%, 0%, 0.08));
         }
 
         .back i {
