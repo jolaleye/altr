@@ -3,10 +3,10 @@ import Number from './Fields/Number';
 import Select from './Fields/Select';
 import Slider from './Fields/Slider';
 
-export default function ImageOptions() {
+export default function ImageOptions({ submit }) {
   const [format, setFormat] = useState('jpg');
-  const [width, setWidth] = useState();
-  const [height, setHeight] = useState();
+  const [width, setWidth] = useState('');
+  const [height, setHeight] = useState('');
   const [quality, setQuality] = useState(90);
   const [compression, setCompression] = useState(1);
 
@@ -36,6 +36,8 @@ export default function ImageOptions() {
         </div>
       )}
 
+      <button onClick={() => submit({ format, width, height, quality, compression })}>Submit</button>
+
       <style jsx>{`
         .options {
           margin-top: 1.5em;
@@ -47,6 +49,18 @@ export default function ImageOptions() {
           justify-content: space-between;
           align-items: center;
           margin-top: 1.5em;
+        }
+
+        button {
+          cursor: pointer;
+          margin-top: 2em;
+          font-size: 1em;
+          color: hsla(0, 0%, 18%, 0.9);
+          font-weight: 600;
+          padding: 0.8em 2em;
+          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          border-radius: 10px;
+          border: none;
         }
       `}</style>
     </div>

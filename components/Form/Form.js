@@ -8,9 +8,11 @@ export default function Form() {
   const [file, setFile] = useState();
   const clearFile = () => setFile(null);
 
+  const submit = options => {};
+
   return (
     <div className="form-container">
-      {file ? <Options file={file} back={clearFile} /> : <Upload upload={setFile} />}
+      {file ? <Options file={file} back={clearFile} submit={submit} /> : <Upload upload={setFile} />}
 
       <style jsx>{`
         .form-container {
