@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import axios from 'axios';
+import shortid from 'shortid';
+import mime from 'mime';
 
 import { breakpoints } from '../../theme';
 import { validateMIME } from '../../utils';
@@ -22,7 +24,8 @@ export default function Upload({ upload, setError }) {
     axios
       .post('http://localhost:3000/fetch', { url: fileUrl }, { responseType: 'blob' })
       .then(res => {
-        const file = res.data;
+        const name = `${shortid.generate()}.${mime.getExtension(res.data.type)}`;
+        const file = new File([res.data], name, { type: res.data.type });
         if (validateMIME(file.type)) upload(file);
         else setError("That URL doesn't belong to a supported image, video, or audio file.");
       })
