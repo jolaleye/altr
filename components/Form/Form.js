@@ -6,6 +6,7 @@ import { breakpoints } from '../../theme';
 import Upload from './Upload';
 import ImageOptions from './ImageOptions';
 import VideoOptions from './VideoOptions';
+import AudioOptions from './AudioOptions';
 import Download from './Download';
 
 export default function Form() {
@@ -62,6 +63,7 @@ export default function Form() {
   else if (file) {
     if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
     else if (/^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
+    else if (/^audio/.test(file.type)) stage = <AudioOptions submit={submit} />;
   } else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
