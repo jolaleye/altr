@@ -94,6 +94,11 @@ export default function Upload({ upload, setError }) {
           padding: 0.8em 1.75em;
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 10px;
+          background-color: white;
+        }
+
+        .fileSelect:hover {
+          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
         }
 
         .fileSelect input {
@@ -154,7 +159,7 @@ export default function Upload({ upload, setError }) {
           background-color: hsl(0, 0%, 97%);
           font-weight: 600;
           font-size: 0.9em;
-          color: hsla(0, 0%, 18%, 0.5);
+          color: hsla(0, 0%, 18%, 0.6);
         }
 
         .fileDrop.dragover {

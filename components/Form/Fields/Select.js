@@ -14,10 +14,10 @@ export default function Select({ children, label, value, onChange }) {
           display: flex;
           flex-flow: column nowrap;
           align-items: flex-start;
-          width: 42%;
+          width: 43%;
           font-weight: 600;
           font-size: 0.8em;
-          color: hsla(0, 0%, 18%, 0.9);
+          color: hsla(0, 0%, 18%, 0.8);
         }
 
         div {
@@ -32,6 +32,7 @@ export default function Select({ children, label, value, onChange }) {
           font-size: 1em;
           color: hsla(0, 0%, 18%, 0.8);
           text-align: left;
+          margin-top: 0.5em;
         }
 
         div i {

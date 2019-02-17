@@ -28,7 +28,7 @@ export default function Download({ result, reset }) {
           <p>Your file is ready!</p>
           <button onClick={() => saveAs(result)}>Download</button>
           <p className="reset" onClick={reset}>
-            Do it again
+            <i className="uil uil-angle-left" /> Do it again
           </p>
         </div>
       ) : (
@@ -41,25 +41,48 @@ export default function Download({ result, reset }) {
       )}
 
       <style jsx>{`
+        p {
+          font-weight: 500;
+          color: hsla(0, 0%, 18%, 0.85);
+        }
+
         button {
           cursor: pointer;
-          margin-top: 2em;
+          margin-top: 1.5em;
           font-size: 1em;
-          color: hsla(0, 0%, 18%, 0.9);
+          color: hsla(0, 0%, 18%, 0.8);
+          font-family: inherit;
           font-weight: 600;
           padding: 0.8em 2em;
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 10px;
           border: none;
+          background-color: white;
+        }
+
+        button:hover {
+          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
+        }
+
+        button:focus {
+          outline: none;
         }
 
         .reset {
           font-size: 0.75em;
           margin-top: 2.25em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: translateX(-1.5%);
         }
 
         .reset:hover {
           cursor: pointer;
+        }
+
+        .reset i {
+          font-size: 1.5em;
         }
 
         .loading {

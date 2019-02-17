@@ -12,10 +12,10 @@ export default function Slider({ label, value, onChange, min, max }) {
           display: flex;
           flex-flow: column nowrap;
           align-items: flex-start;
-          width: 42%;
+          width: 43%;
           font-weight: 600;
           font-size: 0.8em;
-          color: hsla(0, 0%, 18%, 0.9);
+          color: hsla(0, 0%, 18%, 0.8);
         }
 
         .wrapper {
@@ -34,7 +34,7 @@ export default function Slider({ label, value, onChange, min, max }) {
           width: 100%;
           appearance: none;
           border-radius: 10px;
-          background-color: hsl(0, 0%, 45%);
+          background-color: hsla(0, 0%, 18%, 0.6);
           height: 2px;
           margin-left: 0.75em;
         }
@@ -47,10 +47,10 @@ export default function Slider({ label, value, onChange, min, max }) {
           appearance: none;
           cursor: pointer;
           border-radius: 50%;
-          width: 1.25em;
-          height: 1.25em;
+          width: 1.5em;
+          height: 1.5em;
           background-color: white;
-          border: 2px solid hsl(0, 0%, 45%);
+          border: 2px solid hsla(0, 0%, 18%, 0.6);
         }
       `}</style>
     </label>

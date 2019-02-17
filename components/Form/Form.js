@@ -117,10 +117,13 @@ export default function Form() {
           display: flex;
           align-items: center;
           font-size: 0.8em;
+          font-weight: 500;
+          color: hsla(0, 0%, 18%, 0.85);
         }
 
         .back:hover {
           cursor: pointer;
+          filter: drop-shadow(0 4px 2px hsla(0, 0%, 0%, 0.08));
         }
 
         .back i {
@@ -158,15 +161,24 @@ export default function Form() {
 
         .options__submit {
           cursor: pointer;
-          margin-top: 2em;
-          font-size: 1em;
-          color: hsla(0, 0%, 18%, 0.9);
+          margin-top: 2.5em;
+          font-family: inherit;
+          font-size: 0.8em;
+          color: hsla(0, 0%, 18%, 0.8);
           font-weight: 600;
           padding: 0.8em 2em;
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 10px;
           border: none;
           background-color: white;
+        }
+
+        .options__submit:hover {
+          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
+        }
+
+        .options__submit:focus {
+          outline: none;
         }
       `}</style>
     </div>
