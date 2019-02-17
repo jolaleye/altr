@@ -9,8 +9,8 @@ export default function Upload({ upload, setError }) {
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
-    if (validateMIME(file.type)) upload(file);
-    else setError('That file type is not currently supported.');
+    if (file && !validateMIME(file.type)) setError('That file type is not currently supported.');
+    else upload(file);
   };
 
   // handle file upload by url
