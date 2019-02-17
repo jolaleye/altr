@@ -1,14 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import mime from 'mime';
 
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
 import ImageOptions from './ImageOptions';
+import Download from './Download';
 
 export default function Form() {
   const [error, setError] = useState();
   const [file, setFile] = useState();
   const [result, setResult] = useState();
+  const [waiting, setWaiting] = useState();
 
   // clear errors on click
   const form = useRef();
@@ -24,18 +27,29 @@ export default function Form() {
       if (options[option]) reqData.set(option, options[option]);
     }
 
+    setWaiting(true);
     axios
-      .post('http://localhost:3000/upload', reqData)
-      .then(res => setResult(res.data))
+      .post('http://localhost:3000/upload', reqData, { responseType: 'blob' })
+      .then(res => {
+        setWaiting(false);
+        // combine the old name with the new extension
+        const name = `${file.name.replace(/(?:\.([^.]+))?$/, '')}.${mime.getExtension(res.data.type)}`;
+        setResult(new File([res.data], name));
+      })
       .catch(err => {
-        if (err.response) setError(err.response.data);
-        else if (err.request) setError('Something went wrong.');
+        setWaiting(false);
+
+        if (err.response) {
+          const reader = new FileReader();
+          reader.onload = e => setError(e.target.result);
+          reader.readAsText(err.response.data);
+        } else if (err.request) setError('Something went wrong.');
       });
   };
 
   // decide which stage to show
   let stage;
-  if (result) stage = <div />;
+  if (result || waiting) stage = <Download result={result} />;
   else if (file) {
     if (/^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
   } else stage = <Upload upload={setFile} setError={setError} />;
@@ -44,7 +58,7 @@ export default function Form() {
     <div className="form-container" ref={form}>
       <div className="top-bar">
         {/* blank elements center the error message whether the back button is present or not */}
-        {!result && file ? (
+        {!result && !waiting && file ? (
           <p className="back" onClick={() => setFile(null)}>
             <i className="uil uil-angle-left" /> back
           </p>
