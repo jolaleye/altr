@@ -27,6 +27,16 @@ export default function Root({ children }) {
         <meta name="msapplication-TileColor" content="#161616" />
         <meta name="msapplication-config" content="/static/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
+
+        <meta property="og:title" content="Altr • Transform your images, videos, and audio with ease." />
+        <meta
+          property="description"
+          content="Quickly convert between file formats, adjust image quality, import media by URL, and more."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://altr.app" />
+        <meta property="og:image" content="https://altr.app/static/img/thumbnail.png" />
+        <meta property="twitter:card" content="summary" />
       </Head>
 
       {children}
