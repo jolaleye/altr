@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { saveAs } from 'file-saver';
+import ga from 'react-ga';
 
 import { useInterval } from '../../utils';
 
@@ -21,12 +22,17 @@ export default function Download({ result, reset }) {
     else setMsgIndex(0);
   }, 6000);
 
+  const download = () => {
+    saveAs(result);
+    ga.event({ category: 'Tool', action: 'Download' });
+  };
+
   return (
     <>
       {result ? (
         <div>
           <p>Your file is ready!</p>
-          <button onClick={() => saveAs(result)}>Download</button>
+          <button onClick={download}>Download</button>
           <p className="reset" onClick={reset}>
             <i className="uil uil-angle-left" /> Do it again
           </p>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import ga from 'react-ga';
 
 import { breakpoints } from '../../theme';
 import Upload from './Upload';
@@ -61,10 +62,16 @@ export default function Form() {
   // decide which stage to show
   let stage;
   if (result || waiting) stage = <Download result={result} reset={reset} />;
-  else if (file && /^image/.test(file.type)) stage = <ImageOptions submit={submit} />;
-  else if (file && /^video/.test(file.type)) stage = <VideoOptions submit={submit} />;
-  else if (file && /^audio/.test(file.type)) stage = <AudioOptions submit={submit} />;
-  else stage = <Upload upload={setFile} setError={setError} />;
+  else if (file && /^image/.test(file.type)) {
+    stage = <ImageOptions submit={submit} />;
+    ga.event({ category: 'Tool', action: 'Upload', label: 'Image' });
+  } else if (file && /^video/.test(file.type)) {
+    stage = <VideoOptions submit={submit} />;
+    ga.event({ category: 'Tool', action: 'Upload', label: 'Video' });
+  } else if (file && /^audio/.test(file.type)) {
+    stage = <AudioOptions submit={submit} />;
+    ga.event({ category: 'Tool', action: 'Upload', label: 'Audio' });
+  } else stage = <Upload upload={setFile} setError={setError} />;
 
   return (
     <div className="form-container" ref={form}>
