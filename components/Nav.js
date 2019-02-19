@@ -51,7 +51,7 @@ export default function Nav() {
 
         li {
           display: inline;
-          margin-left: 2em;
+          margin-left: 3em;
         }
 
         a {
