@@ -15,7 +15,6 @@ export default function Slider({ label, value, onChange, min, max }) {
           width: 43%;
           font-weight: 600;
           font-size: 0.8em;
-          color: hsla(0, 0%, 18%, 0.8);
         }
 
         .wrapper {
@@ -27,7 +26,7 @@ export default function Slider({ label, value, onChange, min, max }) {
         }
 
         span {
-          color: hsla(0, 0%, 18%, 0.8);
+          color: hsla(0, 0%, 18%, 0.9);
         }
 
         input {

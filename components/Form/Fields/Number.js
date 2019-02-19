@@ -12,7 +12,6 @@ export default function Number({ label, placeholder, value, onChange, min }) {
           width: 43%;
           font-weight: 600;
           font-size: 0.8em;
-          color: hsla(0, 0%, 18%, 0.8);
         }
 
         input {
