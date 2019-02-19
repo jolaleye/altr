@@ -5,10 +5,18 @@ import Footer from '../components/Footer';
 
 export default () => (
   <Root>
-    <Header />
-    <main>
-      <Features />
-    </main>
-    <Footer />
+    <div className="root">
+      <Header />
+      <main>
+        <Features />
+      </main>
+      <Footer />
+    </div>
+
+    <style jsx>{`
+      .root {
+        overflow-x: hidden;
+      }
+    `}</style>
   </Root>
 );
