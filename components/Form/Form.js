@@ -90,6 +90,7 @@ export default function Form() {
           box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
           border-radius: 28px;
           padding: 2em 3em;
+          background-color: white;
         }
 
         .top-bar {
