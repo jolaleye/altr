@@ -42,9 +42,12 @@ export default function Form() {
         setWaiting(false);
 
         if (err.response) {
-          const reader = new FileReader();
-          reader.onload = e => setError(e.target.result);
-          reader.readAsText(err.response.data);
+          if (err.response.status === 413) setError('Sorry, files must be less than 10mb.');
+          else {
+            const reader = new FileReader();
+            reader.onload = e => setError(e.target.result);
+            reader.readAsText(err.response.data);
+          }
         } else if (err.request) {
           setError('Something went wrong.');
         }
