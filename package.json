@@ -7,7 +7,8 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next -- -p 8080"
+    "dev": "next -- -p 8080",
+    "export": "next build && next export"
   },
   "dependencies": {
     "axios": "^0.18.0",
