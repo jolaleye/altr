@@ -3,10 +3,13 @@ import { useEffect, useRef } from 'react';
 
 // prettier-ignore
 const supportedExt = ['jpeg', 'jpg', 'png', 'tiff', 'tif', 'webp', 'mp4', 'mov', 'qt', 'wmv', 'avi', 'mkv', 'webm', 'wav', 'mp3', 'wma'];
-export function validateMIME(type) {
-  const ext = mime.getExtension(type);
-  if (!/^image|^video|^audio/.test(type) || !supportedExt.includes(ext)) return false;
-  return true;
+export function validateType(file) {
+  const ext = mime.getExtension(file.type);
+  return /^image|^video|^audio/.test(file.type) && supportedExt.includes(ext);
+}
+
+export function validateSize(file) {
+  return file.size < 10000000; // 10mb
 }
 
 // react interval hook

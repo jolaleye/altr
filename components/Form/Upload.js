@@ -4,14 +4,15 @@ import shortid from 'shortid';
 import mime from 'mime';
 
 import { breakpoints } from '../../theme';
-import { validateMIME } from '../../utils';
+import { validateType, validateSize } from '../../utils';
 
 export default function Upload({ upload, setError }) {
   // handle file selection
   const fileSelect = useRef();
   const submitFile = () => {
     const file = fileSelect.current.files[0];
-    if (file && !validateMIME(file.type)) setError('That file type is not currently supported.');
+    if (file && !validateType(file)) setError('That file type is not currently supported.');
+    else if (file && !validateSize(file)) setError('Files must be less than 10mb.');
     else upload(file);
   };
 
@@ -26,8 +27,9 @@ export default function Upload({ upload, setError }) {
       .then(res => {
         const name = `${shortid.generate()}.${mime.getExtension(res.data.type)}`;
         const file = new File([res.data], name, { type: res.data.type });
-        if (validateMIME(file.type)) upload(file);
-        else setError("That URL doesn't belong to a supported image, video, or audio file.");
+        if (file && !validateType(file)) setError("That URL doesn't belong to a support file type.");
+        else if (file && !validateSize(file)) setError('Files must be less than 10mb.');
+        else upload(file);
       })
       .catch(err => setError("That URL doesn't seem to work."));
 
@@ -46,8 +48,9 @@ export default function Upload({ upload, setError }) {
     e.target.classList.remove('dragover');
 
     const file = e.dataTransfer.files[0];
-    if (validateMIME(file.type)) upload(file);
-    else setError('This file type is not currently supported.');
+    if (file && !validateType(file)) setError('Sorry, that file type is not currently supported.');
+    else if (file && !validateSize(file)) setError('Sorry, files must be less than 10mb');
+    else upload(file);
   };
 
   return (
