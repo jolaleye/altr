@@ -36,7 +36,7 @@ export default function Form() {
         setWaiting(false);
         // combine the old name with the new extension
         const name = `${file.name.replace(/(?:\.([^.]+))?$/, '')}.${options.format}`;
-        setResult(new File([res.data], name));
+        setResult(new File([res.data], name, { type: res.data.type }));
       })
       .catch(err => {
         setWaiting(false);
