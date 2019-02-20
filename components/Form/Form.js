@@ -31,7 +31,7 @@ export default function Form() {
 
     setWaiting(true);
     axios
-      .post('https://api.altr.app/upload', reqData, { responseType: 'blob' })
+      .post(`${process.env.apiURL}/upload`, reqData, { responseType: 'blob' })
       .then(res => {
         setWaiting(false);
         // combine the old name with the new extension
