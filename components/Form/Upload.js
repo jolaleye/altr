@@ -22,7 +22,7 @@ export default function Upload({ upload, setError }) {
 
     // fetch the content using the api
     axios
-      .post('http://localhost:3000/fetch', { url: fileUrl }, { responseType: 'blob' })
+      .post('https://altr.app/fetch', { url: fileUrl }, { responseType: 'blob' })
       .then(res => {
         const name = `${shortid.generate()}.${mime.getExtension(res.data.type)}`;
         const file = new File([res.data], name, { type: res.data.type });
