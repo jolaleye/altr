@@ -1,4 +1,5 @@
 import ga from 'react-ga';
+import Head from 'next/head';
 
 import Root from '../components/Root';
 import Header from '../components/Header';
@@ -12,6 +13,9 @@ export default () => {
 
   return (
     <Root>
+      <Head>
+        <meta name="google-site-verification" content="--2IU_142cQKYRKwYPI4kGk-aaDqDIXCjYFGl0Jd_fE" />
+      </Head>
       <div className="root">
         <Header />
         <main>
