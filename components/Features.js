@@ -9,7 +9,7 @@ export default function Features() {
         <ul>
           <li>
             <i className="uil uil-check" />
-            Convert between image, video, and audio file formats
+            Quickly convert between file formats
           </li>
           <li>
             <i className="uil uil-check" />
@@ -21,7 +21,7 @@ export default function Features() {
           </li>
           <li>
             <i className="uil uil-check" />
-            Change image and video dimensions
+            Change image and video resolution
           </li>
           <li>
             <i className="uil uil-check" />
