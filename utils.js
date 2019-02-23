@@ -10,10 +10,6 @@ export function validateType(file) {
   return /^image|^video|^audio/.test(file.type) && supportedExt.includes(ext);
 }
 
-export function validateSize(file) {
-  return file.size < 10000000; // 10mb
-}
-
 // react interval hook
 export function useInterval(callback, delay) {
   const savedCallback = useRef();

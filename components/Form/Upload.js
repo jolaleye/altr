@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 
 import { breakpoints, colors, shadows } from '../../theme';
-import { validateType, validateSize, fetch } from '../../utils';
+import { validateType, fetch } from '../../utils';
 
 export default function Upload({ upload, setError }) {
   // handle file selection
@@ -9,7 +9,6 @@ export default function Upload({ upload, setError }) {
   const submitFile = () => {
     const file = fileSelect.current.files[0];
     if (file && !validateType(file)) setError('That file type is not currently supported.');
-    else if (file && !validateSize(file)) setError('Files must be less than 10mb.');
     else upload(file);
   };
 
@@ -23,8 +22,7 @@ export default function Upload({ upload, setError }) {
 
     try {
       const file = await fetch(fileUrl);
-      if (!validateType(file)) setError("That URL doesn't belong to a supported file type.");
-      else if (!validateSize(file)) setError('Files must be less than 10mb.');
+      if (file && !validateType(file)) setError("That URL doesn't belong to a supported file type.");
       else upload(file);
     } catch (err) {
       setError("That URL doesn't seem to work.");
@@ -44,7 +42,6 @@ export default function Upload({ upload, setError }) {
 
     const file = e.dataTransfer.files[0];
     if (file && !validateType(file)) setError('Sorry, that file type is not currently supported.');
-    else if (file && !validateSize(file)) setError('Sorry, files must be less than 10mb');
     else upload(file);
   };
 
