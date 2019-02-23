@@ -22,17 +22,17 @@ export default () => {
           <h1>Cookies</h1>
           <h2>What are cookies?</h2>
           <p>
-            Cookies are tiny text files that websites send to a user's browser. Cookies are generally used for
-            remembering that a user is logged in, analytics services, or site preferences. This page will describe what
+            Cookies are tiny text files that websites send to a user's browser. They are generally used for things like
+            remembering that a user is logged in, site preferences, or analytics services. This page will describe what
             cookies Altr uses and their purpose.
           </p>
           <h2>Cookies in use</h2>
           <p>
-            Altr uses Google Analytics, a widely used analytics service, to help understand how users discover and use
-            the site. Analytics cookies track things such as how long you visit a page or how you got there.
+            1. Altr uses Google Analytics, a widely used analytics service, to understand how users discover and
+            interact with the site.
           </p>
           <p>
-            For more information about how Google uses cookies and analytics, read{' '}
+            For specific information regarding Google's use of this data, read{' '}
             <a target="_blank" href="https://policies.google.com/privacy?hl=en">
               Google's Privacy Policy.
             </a>
