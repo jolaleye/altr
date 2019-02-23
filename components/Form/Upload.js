@@ -1,10 +1,7 @@
 import { useState, useRef } from 'react';
-import axios from 'axios';
-import shortid from 'shortid';
-import mime from 'mime';
 
 import { breakpoints, colors, shadows } from '../../theme';
-import { validateType, validateSize } from '../../utils';
+import { validateType, validateSize, fetch } from '../../utils';
 
 export default function Upload({ upload, setError }) {
   // handle file selection
@@ -21,12 +18,8 @@ export default function Upload({ upload, setError }) {
   const submitUrl = e => {
     e.preventDefault();
 
-    // fetch the content using the api
-    axios
-      .post(`${process.env.apiURL}/fetch`, { url: fileUrl }, { responseType: 'blob' })
-      .then(res => {
-        const name = `${shortid.generate()}.${mime.getExtension(res.data.type)}`;
-        const file = new File([res.data], name, { type: res.data.type });
+    fetch(fileUrl)
+      .then(file => {
         if (file && !validateType(file)) setError("That URL doesn't belong to a support file type.");
         else if (file && !validateSize(file)) setError('Files must be less than 10mb.');
         else upload(file);

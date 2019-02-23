@@ -1,5 +1,7 @@
 import mime from 'mime';
 import { useEffect, useRef } from 'react';
+import axios from 'axios';
+import shortid from 'shortid';
 
 // prettier-ignore
 const supportedExt = ['jpeg', 'jpg', 'png', 'tiff', 'tif', 'webp', 'mp4', 'mov', 'qt', 'wmv', 'avi', 'mkv', 'webm', 'wav', 'mp3', 'wma'];
@@ -29,4 +31,11 @@ export function useInterval(callback, delay) {
       return () => clearInterval(cycle);
     }
   }, [delay]);
+}
+
+export async function fetch(url) {
+  const { data } = await axios.get(url, { responseType: 'blob' });
+  const name = `${shortid.generate()}.${mime.getExtension(data.type)}`;
+  const file = new File([data], name, { type: data.type });
+  return file;
 }
