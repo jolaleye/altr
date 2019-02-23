@@ -33,8 +33,9 @@ export function useInterval(callback, delay) {
   }, [delay]);
 }
 
+// use api to fetch media
 export async function fetch(url) {
-  const { data } = await axios.get(url, { responseType: 'blob' });
+  const { data } = await axios.get(`${process.env.apiURL}/fetch`, { params: { url }, responseType: 'blob' });
   const name = `${shortid.generate()}.${mime.getExtension(data.type)}`;
   const file = new File([data], name, { type: data.type });
   return file;

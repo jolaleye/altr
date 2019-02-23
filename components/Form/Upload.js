@@ -15,18 +15,20 @@ export default function Upload({ upload, setError }) {
 
   // handle file upload by url
   const [fileUrl, setFileUrl] = useState('');
-  const submitUrl = e => {
+  const submitUrl = async e => {
     e.preventDefault();
-
-    fetch(fileUrl)
-      .then(file => {
-        if (file && !validateType(file)) setError("That URL doesn't belong to a support file type.");
-        else if (file && !validateSize(file)) setError('Files must be less than 10mb.');
-        else upload(file);
-      })
-      .catch(err => setError("That URL doesn't seem to work."));
+    if (!fileUrl) return;
 
     setFileUrl('');
+
+    try {
+      const file = await fetch(fileUrl);
+      if (!validateType(file)) setError("That URL doesn't belong to a supported file type.");
+      else if (!validateSize(file)) setError('Files must be less than 10mb.');
+      else upload(file);
+    } catch (err) {
+      setError("That URL doesn't seem to work.");
+    }
   };
 
   // handle file upload by drag & drop
