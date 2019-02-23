@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { breakpoints } from '../theme';
+import { breakpoints, colors } from '../theme';
 
 export default function Nav() {
   return (
@@ -36,7 +36,7 @@ export default function Nav() {
 
         svg {
           width: 5em;
-          fill: hsl(0, 0%, 18%);
+          fill: ${colors.darker};
         }
 
         svg:hover {
@@ -56,7 +56,7 @@ export default function Nav() {
 
         a {
           text-decoration: none;
-          color: hsl(0, 0%, 18%);
+          color: inherit;
         }
 
         @media ${breakpoints.sm} {

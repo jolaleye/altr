@@ -34,7 +34,7 @@ export default function Footer() {
 
       <style jsx>{`
         footer {
-          background-color: hsl(0, 0%, 10%);
+          background-color: hsl(0, 0%, 5%);
           display: flex;
           flex-flow: column nowrap;
           align-items: center;
@@ -57,7 +57,7 @@ export default function Footer() {
 
         a {
           text-decoration: none;
-          color: hsla(0, 0%, 100%, 0.6);
+          color: inherit;
         }
 
         svg {
@@ -71,7 +71,7 @@ export default function Footer() {
         }
 
         p {
-          color: hsla(0, 0%, 100%, 0.3);
+          color: hsla(0, 0%, 100%, 0.25);
           font-size: 0.6em;
           margin-top: 0.6em;
         }

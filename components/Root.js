@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { breakpoints } from '../theme';
+import { breakpoints, colors } from '../theme';
 
 export default function Root({ children }) {
   return (
@@ -50,7 +50,7 @@ export default function Root({ children }) {
 
         html {
           font-size: 16px;
-          color: hsl(0, 0%, 18%);
+          color: ${colors.darker};
           font-family: 'Poppins', sans-serif;
         }
 

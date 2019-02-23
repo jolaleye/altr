@@ -1,3 +1,5 @@
+import { colors } from '../../../theme';
+
 export default function Select({ children, label, value, onChange }) {
   return (
     <label>
@@ -22,14 +24,14 @@ export default function Select({ children, label, value, onChange }) {
         div {
           display: flex;
           padding: 0.75em 1em;
-          background-color: hsl(0, 0%, 97%);
+          background-color: ${colors.lightest};
           border-radius: 10px;
           overflow: hidden;
           font-weight: 600;
           font-size: 0.8em;
           width: 100%;
           font-size: 1em;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
           text-align: left;
           margin-top: 0.5em;
         }
@@ -46,6 +48,7 @@ export default function Select({ children, label, value, onChange }) {
           border: none;
           color: inherit;
           width: 100%;
+          background-color: transparent;
         }
 
         select:focus {

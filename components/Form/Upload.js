@@ -3,7 +3,7 @@ import axios from 'axios';
 import shortid from 'shortid';
 import mime from 'mime';
 
-import { breakpoints } from '../../theme';
+import { breakpoints, colors, shadows } from '../../theme';
 import { validateType, validateSize } from '../../utils';
 
 export default function Upload({ upload, setError }) {
@@ -82,7 +82,8 @@ export default function Upload({ upload, setError }) {
 
         .or {
           display: block;
-          color: hsla(0, 0%, 18%, 0.3);
+          color: ${colors.lightGray};
+          opacity: 0.65;
           font-weight: 600;
           margin: 1.25em 0;
         }
@@ -91,17 +92,17 @@ export default function Upload({ upload, setError }) {
           overflow: hidden;
           position: relative;
           cursor: pointer;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
           font-size: 0.8em;
           font-weight: 600;
           padding: 0.8em 1.75em;
-          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          box-shadow: ${shadows.normal};
           border-radius: 10px;
           background-color: white;
         }
 
         .fileSelect:hover {
-          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
+          box-shadow: ${shadows.hover};
         }
 
         .fileSelect input {
@@ -116,7 +117,7 @@ export default function Upload({ upload, setError }) {
         }
 
         .fileURL {
-          background-color: hsl(0, 0%, 97%);
+          background-color: ${colors.lightest};
           font-family: inherit;
           font-weight: 600;
           font-size: 0.8em;
@@ -130,7 +131,7 @@ export default function Upload({ upload, setError }) {
         }
 
         .fileURL i {
-          color: hsla(0, 0%, 18%, 0.5);
+          color: ${colors.lightGray};
           font-size: 1.2em;
         }
 
@@ -140,14 +141,14 @@ export default function Upload({ upload, setError }) {
           font-family: inherit;
           font-weight: inherit;
           font-size: inherit;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
           border: none;
           background-color: transparent;
           width: 100%;
         }
 
         .fileURL input::placeholder {
-          color: hsla(0, 0%, 18%, 0.5);
+          color: ${colors.lightGray};
         }
 
         .fileURL input:focus {
@@ -159,14 +160,14 @@ export default function Upload({ upload, setError }) {
           width: 90%;
           height: 6em;
           border-radius: 10px;
-          background-color: hsl(0, 0%, 97%);
+          background-color: ${colors.lightest};
           font-weight: 600;
           font-size: 0.9em;
-          color: hsla(0, 0%, 18%, 0.6);
+          color: ${colors.lightGray};
         }
 
         .fileDrop.dragover {
-          background-color: hsl(0, 0%, 92%);
+          background-color: ${colors.light};
         }
 
         .fileDrop p {

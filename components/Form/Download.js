@@ -3,6 +3,7 @@ import { saveAs } from 'file-saver';
 import ga from 'react-ga';
 
 import { useInterval } from '../../utils';
+import { colors, shadows } from '../../theme';
 
 const loadingMsgs = [
   'Putting minions to work...',
@@ -49,25 +50,25 @@ export default function Download({ result, reset }) {
       <style jsx>{`
         p {
           font-weight: 500;
-          color: hsla(0, 0%, 18%, 0.85);
+          color: ${colors.dark};
         }
 
         button {
           cursor: pointer;
           margin-top: 1.5em;
           font-size: 1em;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
           font-family: inherit;
           font-weight: 600;
           padding: 0.8em 2em;
-          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          box-shadow: ${shadows.normal};
           border-radius: 10px;
           border: none;
           background-color: white;
         }
 
         button:hover {
-          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
+          box-shadow: ${shadows.hover};
         }
 
         button:focus {
@@ -103,7 +104,7 @@ export default function Download({ result, reset }) {
         }
 
         .path {
-          stroke: hsla(0, 0%, 18%, 0.85);
+          stroke: ${colors.dark};
           stroke-dasharray: 1, 200;
           stroke-dashoffset: 0;
           animation: dash 1.5s ease-in-out infinite;

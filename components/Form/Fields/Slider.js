@@ -1,3 +1,5 @@
+import { colors } from '../../../theme';
+
 export default function Slider({ label, value, onChange, min, max }) {
   return (
     <label>
@@ -26,14 +28,14 @@ export default function Slider({ label, value, onChange, min, max }) {
         }
 
         span {
-          color: hsla(0, 0%, 18%, 0.9);
+          color: ${colors.dark};
         }
 
         input {
           width: 100%;
           appearance: none;
           border-radius: 10px;
-          background-color: hsla(0, 0%, 18%, 0.6);
+          background-color: ${colors.dark};
           height: 2px;
           margin-left: 0.75em;
         }
@@ -49,7 +51,7 @@ export default function Slider({ label, value, onChange, min, max }) {
           width: 1.5em;
           height: 1.5em;
           background-color: white;
-          border: 2px solid hsla(0, 0%, 18%, 0.6);
+          border: 2px solid ${colors.dark};
         }
       `}</style>
     </label>

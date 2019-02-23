@@ -1,3 +1,5 @@
+import { colors } from '../../../theme';
+
 export default function Number({ label, placeholder, value, onChange, min }) {
   return (
     <label>
@@ -16,7 +18,7 @@ export default function Number({ label, placeholder, value, onChange, min }) {
 
         input {
           padding: 0.75em 1em;
-          background-color: hsl(0, 0%, 97%);
+          background-color: ${colors.lightest};
           border-radius: 10px;
           border: none;
           font-family: inherit;
@@ -24,11 +26,11 @@ export default function Number({ label, placeholder, value, onChange, min }) {
           font-size: 1em;
           width: 100%;
           margin-top: 0.5em;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
         }
 
         input::placeholder {
-          color: hsla(0, 0%, 18%, 0.2);
+          color: ${colors.lightGray};
         }
 
         input:focus {

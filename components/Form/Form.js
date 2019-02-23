@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import ga from 'react-ga';
 
-import { breakpoints } from '../../theme';
+import { breakpoints, colors, shadows } from '../../theme';
 import Upload from './Upload';
 import ImageOptions from './ImageOptions';
 import VideoOptions from './VideoOptions';
@@ -97,7 +97,7 @@ export default function Form() {
         .form-container {
           display: block;
           margin: 3em 0.5em 0 0.5em;
-          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          box-shadow: ${shadows.normal};
           border-radius: 28px;
           padding: 2em 3em;
           background-color: white;
@@ -119,7 +119,7 @@ export default function Form() {
         .error {
           font-size: 0.7em;
           font-weight: 500;
-          color: hsla(0, 100%, 65%, 0.9);
+          color: ${colors.error};
         }
 
         .back {
@@ -128,7 +128,7 @@ export default function Form() {
           align-items: center;
           font-size: 0.8em;
           font-weight: 500;
-          color: hsla(0, 0%, 18%, 0.85);
+          color: ${colors.dark};
         }
 
         .back:hover {
@@ -173,17 +173,17 @@ export default function Form() {
           margin-top: 2.5em;
           font-family: inherit;
           font-size: 0.8em;
-          color: hsla(0, 0%, 18%, 0.8);
+          color: ${colors.dark};
           font-weight: 600;
           padding: 0.8em 2em;
-          box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.15);
+          box-shadow: ${shadows.normal};
           border-radius: 10px;
           border: none;
           background-color: white;
         }
 
         .options__submit:hover {
-          box-shadow: 0 4px 14px hsla(0, 0%, 0%, 0.175);
+          box-shadow: ${shadows.hover};
         }
 
         .options__submit:focus {
