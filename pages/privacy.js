@@ -23,8 +23,8 @@ export default () => {
           <h2>Personal Information We Collect</h2>
           <p>None.</p>
           <p>
-            No personally identifiable information is required to use Altr and therefore none is collected. The files
-            you upload are altered according to your options and immediately deleted once you receive the result.
+            No personally identifiable information is required to use Altr and none is collected. The files you upload
+            are altered according to your options and immediately deleted when you receive the result.
           </p>
         </section>
       </main>
