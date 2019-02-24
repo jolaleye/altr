@@ -4,6 +4,7 @@ import ga from 'react-ga';
 
 import { useInterval } from '../../utils';
 import { colors, shadows } from '../../theme';
+import Loader from './Loader';
 
 const loadingMsgs = [
   'Putting minions to work...',
@@ -41,9 +42,7 @@ export default function Download({ result, reset }) {
       ) : (
         <div>
           <p className="loading">{loadingMsgs[msgIndex]}</p>
-          <svg className="ring" viewBox="25 25 50 50">
-            <circle className="path" cx="50" cy="50" r="20" fill="none" strokeWidth="3" strokeMiterlimit="10" />
-          </svg>
+          <Loader download />
         </div>
       )}
 
@@ -94,41 +93,6 @@ export default function Download({ result, reset }) {
 
         .loading {
           font-size: 0.9em;
-        }
-
-        .ring {
-          transform-origin: center;
-          width: 2.5em;
-          margin-top: 1.5em;
-          animation: rotate 2s linear infinite;
-        }
-
-        .path {
-          stroke: ${colors.dark};
-          stroke-dasharray: 1, 200;
-          stroke-dashoffset: 0;
-          animation: dash 1.5s ease-in-out infinite;
-        }
-
-        @keyframes rotate {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes dash {
-          0% {
-            stroke-dasharray: 1, 200;
-            stroke-dashoffset: 0;
-          }
-          50% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -35px;
-          }
-          100% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -124px;
-          }
         }
       `}</style>
     </>

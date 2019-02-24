@@ -2,8 +2,11 @@ import { useState, useRef } from 'react';
 
 import { breakpoints, colors, shadows } from '../../theme';
 import { validateType, fetch } from '../../utils';
+import Loader from './Loader';
 
 export default function Upload({ upload, setError }) {
+  const [loading, setLoading] = useState(false);
+
   // handle file selection
   const fileSelect = useRef();
   const submitFile = () => {
@@ -19,12 +22,15 @@ export default function Upload({ upload, setError }) {
     if (!fileUrl) return;
 
     setFileUrl('');
+    setLoading(true);
 
     try {
       const file = await fetch(fileUrl);
+      setLoading(false);
       if (file && !validateType(file)) setError("That URL doesn't belong to a supported file type.");
       else upload(file);
     } catch (err) {
+      setLoading(false);
       setError("That URL doesn't seem to work.");
     }
   };
@@ -33,11 +39,13 @@ export default function Upload({ upload, setError }) {
   const fileDrop = useRef();
   const onDragOver = e => {
     e.preventDefault();
+    if (loading) return;
     e.target.classList.add('dragover');
   };
   const onDragLeave = e => e.target.classList.remove('dragover');
   const onDrop = e => {
     e.preventDefault();
+    if (loading) return;
     e.target.classList.remove('dragover');
 
     const file = e.dataTransfer.files[0];
@@ -49,14 +57,21 @@ export default function Upload({ upload, setError }) {
     <div className="upload">
       <label className="fileSelect">
         Choose file
-        <input type="file" onChange={submitFile} ref={fileSelect} />
+        <input type="file" disabled={loading} onChange={submitFile} ref={fileSelect} />
       </label>
 
       <span className="or">OR</span>
 
       <form className="fileURL" onSubmit={submitUrl}>
         <i className="uil uil-search" />
-        <input type="text" placeholder="Enter a URL" value={fileUrl} onChange={e => setFileUrl(e.target.value)} />
+        <input
+          type="text"
+          disabled={loading}
+          placeholder="Enter a URL"
+          value={fileUrl}
+          onChange={e => setFileUrl(e.target.value)}
+        />
+        {loading && <Loader upload />}
       </form>
 
       <span className="or">OR</span>
