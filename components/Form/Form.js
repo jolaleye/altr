@@ -63,7 +63,6 @@ export default function Form() {
   // reset state to go through the form again
   const reset = () => {
     setError();
-    setFile();
     setResult();
     setWaiting();
   };
